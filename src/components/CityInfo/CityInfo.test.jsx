@@ -1,15 +1,16 @@
 import React from 'react';
 import { render } from '@testing-library/react'
-import { CityInfo } from './CityInfo' // SUT: Subject under testing
+import CityInfo from './CityInfo' // SUT: Subject under testing
 
 test("CityInfo render", async () => {
     // AAA
     // Arrange
     // Act
 
-    const { findAllByRole } = render(
-        <CityInfo city={"Mar del Plata"} country={"Argentina"} ></CityInfo>
-    )
+    const city = "Mar del Plata"
+    const country = "Argentina"
+    const { findAllByRole } = render(<CityInfo city={city} country={country} />)
+
     // Assert
     const cityAndCountryComponents = await findAllByRole("heading")
 
