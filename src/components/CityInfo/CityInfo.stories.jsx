@@ -4,9 +4,7 @@ import CityInfo from './CityInfo';
 
 export default {
     title: "CityInfo",
-    component: CityInfo
+    component: CityInfo,
 }
 
-const CityExample = () => ( <CityInfo city={"Mar del Plata"} country={"Argentina"} ></CityInfo> )
-
-export default CityExample;
+export const CityExample = () => (<CityInfo city={"Mar del Plata"} country={"Argentina"} />)
