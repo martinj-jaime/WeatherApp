@@ -10,7 +10,7 @@ const cities = [
 ]
 
 test("CityList Render", async () => {
-    const { findAllByRole } = render(<CityList cities={cities} />)
+    const { findAllByRole } = render(<CityList cities={cities}/>)
 
     const items = await findAllByRole("listitem")
 
