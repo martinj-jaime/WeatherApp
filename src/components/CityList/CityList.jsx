@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid'
 import { CityInfo, Weather } from '../index'
 
-const renderCityAndCountry = cityAndCountry => {
+// Una funcion que retorna otra funcion
+const renderCityAndCountry = eventOnClickCity => cityAndCountry => {
     const { city, country } = cityAndCountry
 
     return (
-        <li key={city}>
+        <li key={city} onClick={eventOnClickCity}>
             <Grid container
                 justifyContent="center"
                 alignItems="center"    
@@ -23,18 +24,19 @@ const renderCityAndCountry = cityAndCountry => {
     )
 }
 
-const CityList = ({ cities }) => {
+const CityList = ({ cities, onClickCity }) => {
   return (
     <ul>
         {
-            cities.map(cityAndCountry => renderCityAndCountry(cityAndCountry))
+            cities.map(cityAndCountry => renderCityAndCountry(onClickCity)(cityAndCountry))
         }
     </ul>
   );
 };
 
 CityList.propTypes = {
-    cities: PropTypes.array.isRequired
+    cities: PropTypes.array.isRequired,
+    onClickCity: PropTypes.func.isRequired
 };
 
 export default CityList;
