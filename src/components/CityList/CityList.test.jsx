@@ -30,3 +30,4 @@ test("CityList click on item", async () => {
 
     expect(fnClickOnItem).toHaveBeenCalledTimes(1)
 })
+ 
