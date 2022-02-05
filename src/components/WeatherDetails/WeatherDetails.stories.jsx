@@ -7,4 +7,4 @@ export default {
     component: WeatherDetails
 }
 
-export const WeatherDetailsExample = () => (<WeatherDetails humedity={25} wind={20} />);
+export const WeatherDetailsExample = () => (<WeatherDetails humidity={25} wind={20} />);
