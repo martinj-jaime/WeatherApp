@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
-import { IconState } from '../index'
+import IconState from '../index'
 
 const ForecastItem = ({ weekDay, hour, state, temperature }) => {
   return (
@@ -11,7 +11,6 @@ const ForecastItem = ({ weekDay, hour, state, temperature }) => {
         direction='column'
         justifyContent='center'
         alignItems='center'  
-        data-testid="typographys"
       >
         <Grid item>
           <Typography variant='h3'> {weekDay} </Typography>

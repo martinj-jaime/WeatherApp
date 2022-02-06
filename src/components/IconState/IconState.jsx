@@ -1,34 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { WiCloud, WiDayCloudy, WiDayFog, WiDaySunny, WiDayRain } from 'react-icons/wi'
-import { IconContext } from 'react-icons'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { WiDayCloudy,
+    WiDaySunny,
+    WiRain,
+    WiSnow,
+    WiRaindrop,
+    WiThunderstorm } from 'react-icons/wi'
+   
+export const validValues = [
+        "cloudy",
+        "sunny",
+        "rain",
+        "snow",
+        "drizzle",
+        "thunderstorm"
+    ]
 
-export const validValues = ['cloud','cloudy','fog','sunny','rain']
 const stateByName = {
-    cloud: WiCloud,
     cloudy: WiDayCloudy,
-    fog: WiDayFog,
     sunny: WiDaySunny,
-    rain: WiDayRain
-}
-
-const renderState = state => {
-    let Icon = stateByName[state] !== undefined ? stateByName[state] : stateByName["sunny"]
-    return <Icon />
+    rain: WiRain,
+    snow: WiSnow, 
+    drizzle: WiRaindrop,
+    thunderstorm: WiThunderstorm
 }
 
 const IconState = ({ state }) => {
-  return (
-    <>
-        <IconContext.Provider value={{size:'5em'}}>
-            {renderState(state)}
-        </IconContext.Provider>
-    </>
-  );
-};
+    const StateByName = stateByName[state]
+    return (
+        <StateByName />
+    )
+}
 
 IconState.propTypes = {
     state: PropTypes.oneOf(validValues).isRequired
-};
+}
 
-export default IconState;
+export default IconState
