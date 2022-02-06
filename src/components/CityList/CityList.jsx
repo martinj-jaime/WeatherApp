@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid'
-import { CityInfo, Weather } from '../index'
+
+// IMPORTS PROBLEM
+import CityInfo from './../CityInfo/CityInfo'
+import Weather from './../Weather/Weather'
+
+// import { CityInfo, Weather } from '../index'
 // import CityInfo from '../CityInfo'
 // import Weather from '../Weather'
+
 
 // Una funcion que retorna otra funcion
 const renderCityAndCountry = eventOnClickCity => cityAndCountry => {
@@ -37,11 +43,13 @@ const CityList = ({ cities, onClickCity }) => {
 };
 
 CityList.propTypes = {
-    cities: PropTypes.shape({
-        city: PropTypes.string.isRequired,
-        country: PropTypes.string.isRequired
-    }).isRequired,
-    onClickCity: PropTypes.func.isRequired
-};
+    cities: PropTypes.arrayOf(
+        PropTypes.shape({
+            city: PropTypes.string.isRequired,
+            country: PropTypes.string.isRequired,
+        })
+    ).isRequired,
+    onClickCity: PropTypes.func.isRequired,
+}
 
 export default CityList;

@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
-import ForecastItem from '../index'
+
+// IMPORTS PROBLEM
+import ForecastItem from './../ForecastItem/ForecastItem'
 
 const renderForecastItem = forecast => {
     const { weekDay, hour, state, temperature } = forecast

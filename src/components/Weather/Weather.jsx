@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography'
-import IconState from '../index'
+
+// IMPORTS PROBLEM
+import IconState from './../IconState/IconState'
 
 const Weather = ({ temperature, state }) => {
   return (

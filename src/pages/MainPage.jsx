@@ -1,6 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
 
+// IMPORTS PROBLEM
+import CityList from './../components/CityList/CityList'
+
+// import CityList from './../components/index'
+// import CityList from './../components/CityList/index'
+
+
 const MainPage = () => {
   const history = useHistory()
 
@@ -8,10 +15,17 @@ const MainPage = () => {
     history.push('/city')
   }
 
+  const cities = [
+    { city: "Mar del Plata", country: "Argentina" },
+    { city: "Sao Pablo", country: "Brasil" },
+    { city: "Barcelona", country: "Spain" },
+    { city: "Ciudad de Mexico", country: "Mexico" }
+  ]
+
   return (
     <div>
-        Main Page
-        <button onClick={onClickHandler} >Ir a city page</button>
+        <h2>Main Page: Lista de Ciudades</h2>
+        <CityList cities={cities} onClickCity={onClickHandler} />
     </div>
     );
 };
