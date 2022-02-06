@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid'
 import { CityInfo, Weather } from '../index'
+// import CityInfo from '../CityInfo'
+// import Weather from '../Weather'
 
 // Una funcion que retorna otra funcion
 const renderCityAndCountry = eventOnClickCity => cityAndCountry => {
