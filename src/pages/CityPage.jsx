@@ -74,19 +74,24 @@ const CityPage = () => {
 
   return (
     <Grid container
-      justifyContent="center"
+      justifyContent="space-around"
+      direction="column"
+      spacing={2}
     >
-      <Grid item xs={12} >
+      <Grid item container 
+        xs={12} 
+        justifyContent='center'
+        alignItems='flex-end'
+      >
         <CityInfo city={city} country={country} />
       </Grid>
 
-      <Grid item xs={12} >
-        <Grid item xs={8} >
+      <Grid container item xs={12} 
+        justifyContent='center'
+        alignItems='center'
+      >
           <Weather state={state} temperature={temperature} />
-        </Grid>
-        <Grid item xs={4} >
           <WeatherDetails humidity={humidity} wind={wind} />
-        </Grid>
       </Grid>
 
       <Grid item xs={12} >

@@ -6,6 +6,8 @@ import { WiDayCloudy,
     WiSnow,
     WiRaindrop,
     WiThunderstorm } from 'react-icons/wi'
+
+import { IconContext } from 'react-icons'
    
 export const validValues = [
         "cloudy",
@@ -28,7 +30,9 @@ const stateByName = {
 const IconState = ({ state }) => {
     const StateByName = stateByName[state]
     return (
-        <StateByName />
+        <IconContext.Provider value={{size: '6em'}} >
+            <StateByName />
+        </IconContext.Provider>
     )
 }
 

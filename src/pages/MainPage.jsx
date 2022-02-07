@@ -24,7 +24,7 @@ const MainPage = () => {
 
   return (
     <div>
-        <h2>Main Page: Lista de Ciudades</h2>
+        <h2>City List</h2>
         <CityList cities={cities} onClickCity={onClickHandler} />
     </div>
     );

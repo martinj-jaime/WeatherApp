@@ -9,8 +9,12 @@ function App() {
       justifyContent="center"
       direction="row"
     >
-      <Grid item sm={10}>
-      <h2>App</h2>
+      <Grid item 
+      xs={12}
+      sm={11}
+      md={10}
+      lg={8}
+      >
       <Router>
 
         <Switch>
