@@ -1,12 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
 
-// IMPORTS PROBLEM
+import Paper from '@material-ui/core/Paper'
+
+// IMPORTS
 import CityList from './../components/CityList/CityList'
-
-// import CityList from './../components/index'
-// import CityList from './../components/CityList/index'
-
+import AppFrame from './../components/AppFrame/AppFrame'
 
 const MainPage = () => {
   const history = useHistory()
@@ -23,10 +22,11 @@ const MainPage = () => {
   ]
 
   return (
-    <div>
-        <h2>City List</h2>
+    <AppFrame>
+      <Paper elevation={3}>
         <CityList cities={cities} onClickCity={onClickHandler} />
-    </div>
+      </Paper>
+    </AppFrame>
     );
 };
 

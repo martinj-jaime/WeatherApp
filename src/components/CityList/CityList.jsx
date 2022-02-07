@@ -2,18 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Styles
-import './CityList.css'
 import Grid from '@material-ui/core/Grid'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 
-// IMPORTS PROBLEM
+// IMPORTS 
 import CityInfo from './../CityInfo/CityInfo'
 import Weather from './../Weather/Weather'
-// import { CityInfo, Weather } from '../index'
-// import CityInfo from '../CityInfo'
-// import Weather from '../Weather'
-
 
 // Una funcion que retorna otra funcion
 const renderCityAndCountry = eventOnClickCity => cityAndCountry => {

@@ -9,6 +9,8 @@ import WeatherDetails from './../components/WeatherDetails/WeatherDetails'
 import ForecastChart from './../components/ForecastChart/ForecastChart' 
 import Forecast from './../components/Forecast/Forecast' 
 
+import AppFrame from './../components/AppFrame/AppFrame'
+
 const dataExample = [
   {
       "dayHour": "Jue 18",
@@ -73,6 +75,7 @@ const CityPage = () => {
   const forecastItemList = forecastItemListExample
 
   return (
+    <AppFrame>
     <Grid container
       justifyContent="space-around"
       direction="column"
@@ -108,6 +111,7 @@ const CityPage = () => {
           </Link>
       </div>
     </Grid>
+    </AppFrame>
     );
 };
 
