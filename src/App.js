@@ -1,11 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { WelcomePage, MainPage, CityPage, NotFoundPage } from './pages/index'
-
+import { Grid } from '@material-ui/core'
 
 function App() {
   return (
-    <div className="App">
+    <Grid container
+      justifyContent="center"
+      direction="row"
+    >
+      <Grid item sm={10}>
       <h2>App</h2>
       <Router>
 
@@ -28,7 +32,8 @@ function App() {
         </Switch>
       
       </Router>
-    </div>
+      </Grid>
+    </Grid>
   );
 }
 

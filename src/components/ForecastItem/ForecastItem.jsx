@@ -15,16 +15,16 @@ const ForecastItem = ({ weekDay, hour, state, temperature }) => {
         alignItems='center'  
       >
         <Grid item>
-          <Typography variant='h3'> {weekDay} </Typography>
+          <Typography variant='h6'> {weekDay} </Typography>
         </Grid>
         <Grid item>
-          <Typography variant='h3'> {hour} </Typography>
+          <Typography variant='h6'> {hour} </Typography>
         </Grid>
         <Grid item>
           <IconState state={state} />
         </Grid>
         <Grid item>
-          <Typography variant='h3'> {temperature} º</Typography>
+          <Typography variant='h6'> {temperature} º</Typography>
         </Grid>
       </Grid>
     </>

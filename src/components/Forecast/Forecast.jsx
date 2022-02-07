@@ -9,9 +9,10 @@ const renderForecastItem = forecast => {
     const { weekDay, hour, state, temperature } = forecast
     return (
         <Grid 
-            data-testid="forecast-item-container" 
+            // data-testid="forecast-item-container" 
             item key={`${weekDay}${hour}`}>
             <ForecastItem 
+                data-testid="forecast-item-container" 
                 hour={hour}
                 weekDay={weekDay}
                 state={state}
@@ -24,7 +25,7 @@ const renderForecastItem = forecast => {
 const Forecast = ({ forecastItemList }) => {
     return (
         <Grid container
-            justify="space-around"
+            justifyContent="space-around"
             alignItems="center">
             {
                 forecastItemList.map(forecast => renderForecastItem(forecast))
