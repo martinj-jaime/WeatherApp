@@ -61,7 +61,7 @@ const CityPage = () => {
         country = 'Argentina';
 
   // Weather
-  const state = 'cloudy',
+  const state = 'clouds',
         temperature = 20;
 
   // WeatherDetails
