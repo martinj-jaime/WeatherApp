@@ -10,8 +10,8 @@ import { WiDayCloudy,
 import { IconContext } from 'react-icons'
    
 export const validValues = [
-        "cloudy",
-        "sunny",
+        "clouds",
+        "clear",
         "rain",
         "snow",
         "drizzle",
@@ -19,8 +19,8 @@ export const validValues = [
     ]
 
 const stateByName = {
-    cloudy: WiDayCloudy,
-    sunny: WiDaySunny,
+    clouds: WiDayCloudy,
+    clear: WiDaySunny,
     rain: WiRain,
     snow: WiSnow, 
     drizzle: WiRaindrop,

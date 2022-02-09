@@ -8,5 +8,5 @@ export default {
 }
 
 export const ForecastItemExample = () => (
-    <ForecastItem weekDay={'Lunes'} hour={10} state={'sunny'} temperature={25} />
+    <ForecastItem weekDay={'Lunes'} hour={10} state={'clouds'} temperature={25} />
 )
