@@ -24,7 +24,7 @@ const renderCityAndCountry = eventOnClickCity => (cityAndCountry, weather) => {
         <ListItem 
         button
         key={getCityCode(city, countryCode)} 
-        onClick={eventOnClickCity}
+        onClick={() => eventOnClickCity(city, countryCode)}
         >
             <Grid container
                 justifyContent="center"
@@ -48,8 +48,8 @@ const CityList = ({ cities, onClickCity }) => {
 
     useEffect(() => {
         const setWeather = async (city, countryCode) => {
-            const apiKey = 'ab82a15251067643e2b31f39bea5981f'
-            const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&limit=1&appid=${apiKey}`
+            // console.log(process.env.REACT_APP_API_KEY)
+            const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&limit=1&appid=${process.env.REACT_APP_API_KEY}`
 
             try {
                 const res = await axios.get(url)
