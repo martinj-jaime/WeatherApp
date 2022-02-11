@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios'
 
 import { getWeatherUrl } from '../utils/apiUrls'
-import { getCityCode, toCelcius } from '../utils/utils'
+import getAllWeather from '../utils/transforms/getAllWeather';
 
 const useCityList = (cities) => {
     const [allWeather, setAllWeather] = useState({});
@@ -13,17 +13,9 @@ const useCityList = (cities) => {
             const url = getWeatherUrl({city,countryCode})
             try {
                 const res = await axios.get(url)
-                const { data } = res
 
-                const temperature = toCelcius(data.main.temp) 
-                const state = data.weather[0].main.toString().toLowerCase()
-                const propName = getCityCode(city, countryCode)
-                const propValue = { temperature, state }
-
-                setAllWeather(allWeather => (
-                    { ...allWeather, [propName]: propValue }
-                ))
-            
+                const allWeatherAux = getAllWeather({res,city,countryCode})
+                setAllWeather(allWeather => ({ ...allWeather, ...allWeatherAux }))
             } catch(err) {
                 if(err.response) { 
                     setError("Ha ocurrido un error en el servidor del clima")
