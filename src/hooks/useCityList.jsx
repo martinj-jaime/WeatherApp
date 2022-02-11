@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios'
-import convertUnits from 'convert-units'
 
 import { getWeatherUrl } from '../utils/apiUrls'
-
-const getCityCode = (city, countryCode) => `${city}-${countryCode}`
+import { getCityCode, toCelcius } from '../utils/utils'
 
 const useCityList = (cities) => {
     const [allWeather, setAllWeather] = useState({});
@@ -17,7 +15,7 @@ const useCityList = (cities) => {
                 const res = await axios.get(url)
                 const { data } = res
 
-                const temperature = Number(convertUnits(data.main.temp).from('K').to('C').toFixed(0)) 
+                const temperature = toCelcius(data.main.temp) 
                 const state = data.weather[0].main.toString().toLowerCase()
                 const propName = getCityCode(city, countryCode)
                 const propValue = { temperature, state }

@@ -1,37 +1,12 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-// import Clouds from 'vanta/dist/vanta.clouds.min'
-// import * as THREE from 'three'
 
-const WelcomeScreen = ({ children }) => {
-    const myRefDiv = useRef(null)
-    // const [vanta,setVanta] = useState(0)
+import useVanta from '../../hooks/useVanta';
 
-    console.log(myRefDiv.current);
+const WelcomeScreen = ({ children }) => {    
 
-    useEffect(() => {
-        console.log(myRefDiv.current);
+    const myRefDiv = useVanta()
 
-        // Vanta Clouds Animation
-        // if(!vanta) {
-        //     setVanta(Clouds({
-        //         THREE,
-        //         el: myRefDiv.current
-        //     }))
-
-        //     console.log('Vanta = !0');
-        // }
-
-        // Cleaning (componentWillUnMount)
-        // return () => {
-        //     if(vanta){
-        //         vanta.destroy()
-        //         console.log('Libero los recursos');
-        //     }
-        // }
-    }, )
-    // [vanta]
-    
     return (
         <div ref={myRefDiv} className='full'>
             {children}

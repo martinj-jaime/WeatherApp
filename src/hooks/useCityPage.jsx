@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import moment from 'moment'
 import 'moment/locale/es'
-import convertUnits from 'convert-units'
 
 import { getForecastUrl } from '../utils/apiUrls'
+import { toCelcius } from '../utils/utils'
 
 const useCityPage = () => {
     const [chartData,setChartData] = useState(null)
@@ -19,8 +19,6 @@ const useCityPage = () => {
         const url = getForecastUrl({city,countryCode})
         try {
           const { data } = await axios.get(url)
-  
-          const toCelcius = (temp) => Number(convertUnits(temp).from('K').to('C').toFixed(0))
   
           // ForecastChart DATA //
           const daysAhead = [0,1,2,3,4,5]
