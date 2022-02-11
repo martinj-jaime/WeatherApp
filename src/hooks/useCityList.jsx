@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios'
 import convertUnits from 'convert-units'
 
+import { getWeatherUrl } from '../utils/apiUrls'
+
 const getCityCode = (city, countryCode) => `${city}-${countryCode}`
 
 const useCityList = (cities) => {
@@ -10,9 +12,7 @@ const useCityList = (cities) => {
 
     useEffect(() => {
         const setWeather = async (city, countryCode) => {
-            // console.log(process.env.REACT_APP_API_KEY)
-            const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&limit=1&appid=${process.env.REACT_APP_API_KEY}`
-
+            const url = getWeatherUrl({city,countryCode})
             try {
                 const res = await axios.get(url)
                 const { data } = res
