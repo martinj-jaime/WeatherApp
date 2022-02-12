@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import useCityList from './../../hooks/useCityList'
+
 // Styles
 import Grid from '@material-ui/core/Grid'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import Alert from '@material-ui/lab/Alert'
+
 // IMPORTS 
-import useCityList from './../../hooks/useCityList'
 import CityInfo from './../CityInfo/CityInfo'
 import Weather from './../Weather/Weather'
+
 
 const getCityCode = (city, countryCode) => `${city}-${countryCode}`
 
@@ -39,9 +42,9 @@ const renderCityAndCountry = eventOnClickCity => (cityAndCountry, weather) => {
     )
 }
 
-const CityList = ({ cities, onClickCity }) => {
+const CityList = ({ cities, onClickCity, allWeather, onSetAllWeather }) => {
 
-    const { allWeather, error, setError } = useCityList(cities)
+    const { error, setError } = useCityList(cities, onSetAllWeather)
 
   return (
     <div>

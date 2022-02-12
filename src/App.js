@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { WelcomePage, MainPage, CityPage, NotFoundPage } from './pages/index'
 
 function App() {
+  const [allWeather, setAllWeather] = useState({});
+
+  const onSetAllWeather = useMemo(() => (weatherCity => {
+    setAllWeather(allWeather => ({ ...allWeather, ...weatherCity }))
+  }), [setAllWeather])
+
   return (
       <Router>
 
@@ -12,11 +18,11 @@ function App() {
           </Route>
 
           <Route path='/main'>
-            <MainPage />
+            <MainPage allWeather={allWeather} onSetAllWeather={onSetAllWeather} />
           </Route>
 
           <Route path='/city/:countryCode/:city'>
-            <CityPage />
+            <CityPage allWeather={allWeather} onSetAllWeather={onSetAllWeather} />
           </Route>
 
           <Route>
