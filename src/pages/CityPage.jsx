@@ -22,17 +22,20 @@ import Alert from '@material-ui/lab/Alert'
 import AppFrame from './../components/AppFrame/AppFrame'
 
 const CityPage = ({ data, actions }) => {
-  const { allWeather } = data
-  const { onSetAllWeather } = actions
+  const { allWeather, allChartData, allForecastItemList } = data
+  const { onSetAllWeather, onSetChartData, onSetForecastItemList } = actions
   
-  const { city, countryCode, chartData, forecastItemList, error, setError } = useCityPage()
+  const { city, countryCode, error, setError } = useCityPage( allChartData, allForecastItemList, onSetChartData, onSetForecastItemList )
   
   const cities = useMemo(() => ([{city, countryCode}]), [city,countryCode])
   
   useCityList(cities, allWeather, onSetAllWeather)
 
-  const weather = allWeather[getCityCode(city,countryCode)]
+  const cityCode = getCityCode(city,countryCode)
 
+  const weather = allWeather[cityCode]
+  const chartData = allChartData[cityCode]
+  const forecastItemList = allForecastItemList[cityCode]
 
   // CityInfo
   const country = countryCode && getCountryNameByCountryCode({ countryCode })
@@ -44,6 +47,10 @@ const CityPage = ({ data, actions }) => {
   // WeatherDetails
   const humidity = weather && weather.humidity,
         wind = weather && weather.temperature
+    
+  // ForecastChart
+
+  // Forecast 
 
   return (
     <AppFrame>
