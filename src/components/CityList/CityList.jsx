@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import useCityList from './../../hooks/useCityList'
 
+import { getCityCode } from './../../utils/utils'
+
 // Styles
 import Grid from '@material-ui/core/Grid'
 import List from '@material-ui/core/List'
@@ -14,9 +16,6 @@ import CityInfo from './../CityInfo/CityInfo'
 import Weather from './../Weather/Weather'
 
 
-const getCityCode = (city, countryCode) => `${city}-${countryCode}`
-
-// Una funcion que retorna otra funcion
 const renderCityAndCountry = eventOnClickCity => (cityAndCountry, weather) => {
     const { city, countryCode, country } = cityAndCountry
     //const { temperature, state } = weather
@@ -44,9 +43,9 @@ const renderCityAndCountry = eventOnClickCity => (cityAndCountry, weather) => {
 
 const CityList = ({ cities, onClickCity, data, actions }) => {
     const { allWeather } = data
-    const { onSetAllWeather } = actions
+    //const { onSetAllWeather } = actions
 
-    const { error, setError } = useCityList(cities, allWeather, onSetAllWeather)
+    const { error, setError } = useCityList(cities, allWeather, actions)
 
   return (
     <div>
@@ -54,10 +53,10 @@ const CityList = ({ cities, onClickCity, data, actions }) => {
             error && <Alert severity="error" onClose={() => setError(null)}> {error} </Alert>
         }
         <List>
-        {
-            cities.map(cityAndCountry => 
-                renderCityAndCountry(onClickCity)(cityAndCountry, allWeather[getCityCode(cityAndCountry.city, cityAndCountry.countryCode)]))
-        }
+            {
+                cities.map(cityAndCountry => renderCityAndCountry(onClickCity)(cityAndCountry, 
+                    allWeather[getCityCode(cityAndCountry.city, cityAndCountry.countryCode)]))
+            }
         </List>
     </div>
   );

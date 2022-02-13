@@ -8,7 +8,7 @@ import { getCityCode } from '../utils/utils'
 import getChartData from '../utils/transforms/getChartData';
 import getForecastItemList from '../utils/transforms/getForecastItemList';
 
-const useCityPage = (allChartData, allForecastItemList, onSetChartData, onSetForecastItemList) => {
+const useCityPage = (allChartData, allForecastItemList, actions) => {
 
     const [error, setError] = useState(null);
     const { city, countryCode } = useParams()
@@ -23,11 +23,13 @@ const useCityPage = (allChartData, allForecastItemList, onSetChartData, onSetFor
 
           // ForecastChart DATA //
           const dataAux = getChartData({ data })
-          onSetChartData({ [cityCode]: dataAux })
+          //onSetChartData({ [cityCode]: dataAux })
+          actions({ type: 'SET_CHART_DATA', payload: {[cityCode]: dataAux} })
 
           // Forecast DATA //
           const forecastItemListAux = getForecastItemList({ data })
-          onSetForecastItemList({ [cityCode]: forecastItemListAux })
+          //onSetForecastItemList({ [cityCode]: forecastItemListAux })
+          actions({ type: 'SET_FORECAST_ITEM_LIST', payload: {[cityCode]: forecastItemListAux} })
   
         } catch(err) {
           if(err.response) { 
@@ -46,7 +48,7 @@ const useCityPage = (allChartData, allForecastItemList, onSetChartData, onSetFor
         getForecast()
       }
 
-    }, [city,countryCode,allChartData,allForecastItemList,onSetChartData,onSetForecastItemList])
+    }, [city,countryCode,allChartData,allForecastItemList,actions])
   
     return { city, countryCode, error, setError }
 }

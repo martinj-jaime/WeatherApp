@@ -23,13 +23,13 @@ import AppFrame from './../components/AppFrame/AppFrame'
 
 const CityPage = ({ data, actions }) => {
   const { allWeather, allChartData, allForecastItemList } = data
-  const { onSetAllWeather, onSetChartData, onSetForecastItemList } = actions
+  // const { onSetAllWeather, onSetChartData, onSetForecastItemList } = actions
   
-  const { city, countryCode, error, setError } = useCityPage( allChartData, allForecastItemList, onSetChartData, onSetForecastItemList )
+  const { city, countryCode, error, setError } = useCityPage( allChartData, allForecastItemList, actions )
   
   const cities = useMemo(() => ([{city, countryCode}]), [city,countryCode])
   
-  useCityList(cities, allWeather, onSetAllWeather)
+  useCityList(cities, allWeather, actions)
 
   const cityCode = getCityCode(city,countryCode)
 
