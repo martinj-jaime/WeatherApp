@@ -21,13 +21,15 @@ import Alert from '@material-ui/lab/Alert'
 
 import AppFrame from './../components/AppFrame/AppFrame'
 
-const CityPage = ({ allWeather, onSetAllWeather }) => {
-
+const CityPage = ({ data, actions }) => {
+  const { allWeather } = data
+  const { onSetAllWeather } = actions
+  
   const { city, countryCode, chartData, forecastItemList, error, setError } = useCityPage()
   
   const cities = useMemo(() => ([{city, countryCode}]), [city,countryCode])
   
-  useCityList(cities, onSetAllWeather)
+  useCityList(cities, allWeather, onSetAllWeather)
 
   const weather = allWeather[getCityCode(city,countryCode)]
 
