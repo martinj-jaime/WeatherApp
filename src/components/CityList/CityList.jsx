@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import useCityList from './../../hooks/useCityList'
-
 import { getCityCode } from './../../utils/utils'
+import { useWeatherDispatchContext, useWeatherStateContext } from '../../WeatherContext';
 
 // Styles
 import Grid from '@material-ui/core/Grid'
@@ -51,9 +51,11 @@ const CityListItem = React.memo(function CityListItem({ city, countryCode, count
 
 // CityListItem.displayName = 'CityListItem'
 
-const CityList = ({ cities, onClickCity, data, actions }) => {
+const CityList = ({ cities, onClickCity }) => {
+    const actions = useWeatherDispatchContext()
+    const data = useWeatherStateContext()
+
     const { allWeather } = data
-    //const { onSetAllWeather } = actions
 
     const { error, setError } = useCityList(cities, allWeather, actions)
 
