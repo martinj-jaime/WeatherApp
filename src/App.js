@@ -1,16 +1,16 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useCallback } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { WelcomePage, MainPage, CityPage, NotFoundPage } from './pages/index'
 
+const initialValue = {
+  allWeather: {},
+  allChartData: {}, 
+  allForecastItemList: {}
+}
+
 function App() {
   
-  const initialValue = {
-        allWeather: {},
-        allChartData: {}, 
-        allForecastItemList: {}
-  }
-
-  const reducer = (state, action) => {
+  const reducer = useCallback((state, action) => {
     switch (action.type) {
         case 'SET_ALL_WEATHER':
             const weatherCity = action.payload
@@ -27,42 +27,9 @@ function App() {
         default:
             return state 
     }
-  }
+  }, [])
 
   const [state, dispatch] = useReducer(reducer, initialValue)
-
-  // hooks
-  // const [allWeather, setAllWeather] = useState({})
-  // const [allChartData, setAllChartData] = useState({})
-  // const [allForecastItemList, setAllForecastItemList] = useState({})
-
-  // const onSetAllWeather = useCallback(weatherCity => {
-  //   setAllWeather(allWeather => ({ ...allWeather, ...weatherCity }))
-  // }, [setAllWeather])
-
-  // const onSetChartData = useCallback((chartDataCity) => {
-  //   setAllChartData(allChartData => ({ ...allChartData, ...chartDataCity }))
-  // }, [setAllChartData])
-
-  // const onSetForecastItemList = useCallback((forecastItemListCity) => {
-  //   setAllForecastItemList(allForecastItemList => ({ ...allForecastItemList, ...forecastItemListCity }))
-  // }, [setAllForecastItemList])
-
-  // const actions = useMemo(() => (
-  //   {
-  //   onSetAllWeather,
-  //   onSetChartData,
-  //   onSetForecastItemList
-  //   }
-  // ), [onSetAllWeather,onSetChartData,onSetForecastItemList])
-
-  // const data = useMemo(() => (
-  //   {
-  //     allWeather,
-  //     allChartData,
-  //     allForecastItemList
-  //   }
-  // ), [allWeather,allChartData,allForecastItemList])
 
   return (
       <Router>

@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
+
+import { IconContext } from 'react-icons'
 
 // IMPORTS PROBLEM
 import IconState from './../IconState/IconState'
 
 const ForecastItem = ({ weekDay, hour, state, temperature }) => {
+  const iconContextSize = useMemo(() => ({ size: '5rem' }), [])
   return (
     <>
       <Grid container
@@ -21,7 +24,9 @@ const ForecastItem = ({ weekDay, hour, state, temperature }) => {
           <Typography variant='h6'> {hour} </Typography>
         </Grid>
         <Grid item>
-          <IconState state={state} />
+          <IconContext.Provider value={iconContextSize}>
+            <IconState state={state} />
+          </IconContext.Provider>
         </Grid>
         <Grid item>
           <Typography variant='h6'> {temperature} º</Typography>

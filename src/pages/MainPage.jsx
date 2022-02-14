@@ -13,9 +13,9 @@ import AppFrame from './../components/AppFrame/AppFrame'
 const MainPage = ({ data, actions }) => {
   const history = useHistory()
 
-  const onClickHandler = (city, countryCode) => {    
+  const onClickHandler = React.useCallback((city, countryCode) => {    
     history.push(`/city/${countryCode}/${city}`)
-  }
+  }, [history])
 
   return (
     <AppFrame>

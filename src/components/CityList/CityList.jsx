@@ -15,15 +15,23 @@ import Alert from '@material-ui/lab/Alert'
 import CityInfo from './../CityInfo/CityInfo'
 import Weather from './../Weather/Weather'
 
-
 const renderCityAndCountry = eventOnClickCity => (cityAndCountry, weather) => {
-    const { city, countryCode, country } = cityAndCountry
-    //const { temperature, state } = weather
+    const { city, countryCode } = cityAndCountry
+    
+    return <CityListItem 
+    key={getCityCode(city, countryCode)}
+    eventOnClickCity={eventOnClickCity} 
+    weather={weather} 
+    {...cityAndCountry} 
+    />
+}
 
+const CityListItem = React.memo(function CityListItem({ city, countryCode, country, eventOnClickCity, weather }) {
+    // const { city, countryCode, country } = cityAndCountry
+    //const { temperature, state } = weather
     return (
         <ListItem 
         button
-        key={getCityCode(city, countryCode)} 
         onClick={() => eventOnClickCity(city, countryCode)}
         >
             <Grid container
@@ -39,7 +47,9 @@ const renderCityAndCountry = eventOnClickCity => (cityAndCountry, weather) => {
             </Grid>
         </ListItem>
     )
-}
+})
+
+// CityListItem.displayName = 'CityListItem'
 
 const CityList = ({ cities, onClickCity, data, actions }) => {
     const { allWeather } = data
@@ -73,4 +83,4 @@ CityList.propTypes = {
     onClickCity: PropTypes.func.isRequired,
 }
 
-export default CityList;
+export default React.memo(CityList);
